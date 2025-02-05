@@ -153,10 +153,12 @@ module "hnsesb_api_gateway_client_manager" {
   account          = module.account
 }
 module "HOOPC" {
-  source = "./clients/hoopc"
+  source                       = "./clients/hoopc"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "HOOPC_STG" {
-  source = "./clients/hoopc_stg"
+  source                       = "./clients/hoopc_stg"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "HSCIS" {
   source = "./clients/hscis"
