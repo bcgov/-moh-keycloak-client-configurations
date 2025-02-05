@@ -24,6 +24,8 @@ module "payara-client" {
     "https://gis.ynr9ed-dev.nimbus.cloud.gov.bc.ca/gis/*",
     "https://gis.ynr9ed-test.nimbus.cloud.gov.bc.ca/gis/*",
   ]
+  authentication_flow_binding_override_browser_id = var.browser_idp_restriction_flow
+  login_theme                                     = "moh-app-realm-idp-restriction"
 }
 
 resource "keycloak_generic_client_protocol_mapper" "phsa_windowsaccountname" {
@@ -40,4 +42,13 @@ resource "keycloak_generic_client_protocol_mapper" "phsa_windowsaccountname" {
     "claim.name" : "preferred_username",
     "jsonType.label" : "String"
   }
+}
+
+resource "keycloak_openid_client_default_scopes" "client_default_scopes" {
+  realm_id  = module.payara-client.CLIENT.realm_id
+  client_id = module.payara-client.CLIENT.id
+  default_scopes = [
+    "idir_aad",
+    "phsa"
+  ]
 }
