@@ -216,10 +216,12 @@ module "METASPACE" {
   source = "./clients/metaspace"
 }
 module "MIWT" {
-  source = "./clients/miwt"
+  source                       = "./clients/miwt"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "MIWT_STG" {
-  source = "./clients/miwt_stg"
+  source                       = "./clients/miwt_stg"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "MOH-SERVICENOW" {
   source = "./clients/moh-servicenow"
