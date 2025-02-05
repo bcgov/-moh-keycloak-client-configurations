@@ -75,7 +75,9 @@ module "FLORIZEL-TRAINING" {
   browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "FMDB" {
-  source = "./clients/fmdb"
+  source                       = "./clients/fmdb"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
+
 }
 module "FORMS" {
   source = "./clients/forms"
