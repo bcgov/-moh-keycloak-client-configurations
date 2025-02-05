@@ -481,7 +481,8 @@ module "SAT-EFORMS_QA" {
   source = "./clients/sat-eforms_qa"
 }
 module "SFDS" {
-  source = "./clients/sfds"
+  source                       = "./clients/sfds"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "SWT" {
   source = "./clients/swt"
