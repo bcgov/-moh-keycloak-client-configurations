@@ -28,8 +28,11 @@ resource "keycloak_openid_client" "CLIENT" {
   ]
   web_origins = [
   ]
-  authentication_flow_binding_override_browser_id = var.browser_idp_restriction_flow
-  login_theme                                     = "moh-app-realm-idp-restriction"
+  authentication_flow_binding_overrides {
+    #browser-idp-restriction flow
+    browser_id = var.browser_idp_restriction_flow
+  }
+  login_theme = "moh-app-realm-idp-restriction"
 }
 resource "keycloak_openid_user_session_note_protocol_mapper" "IDP" {
   add_to_id_token  = false
@@ -42,8 +45,8 @@ resource "keycloak_openid_user_session_note_protocol_mapper" "IDP" {
 }
 
 resource "keycloak_openid_client_default_scopes" "client_default_scopes" {
-  realm_id  = module.payara-client.CLIENT.realm_id
-  client_id = module.payara-client.CLIENT.id
+  realm_id  = keycloak_openid_client.CLIENT.realm_id
+  client_id = keycloak_openid_client.CLIENT.id
   default_scopes = [
     "idir_aad",
     "phsa",
