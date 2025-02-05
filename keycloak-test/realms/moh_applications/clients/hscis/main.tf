@@ -31,6 +31,8 @@ module "payara-client" {
     "https://logontest7.gov.bc.ca/clp-cgi/logoff.cgi*",
     "https://sts.healthbc.org/adfs/ls/*",
   ]
+  authentication_flow_binding_override_browser_id = var.browser_idp_restriction_flow
+  login_theme                                     = "moh-app-realm-idp-restriction"
 }
 resource "keycloak_openid_user_attribute_protocol_mapper" "sfds_auth_1" {
   add_to_id_token = false
@@ -101,4 +103,15 @@ resource "keycloak_generic_client_protocol_mapper" "phsa_windowsaccountname" {
     "claim.name" : "preferred_username",
     "jsonType.label" : "String"
   }
+}
+
+resource "keycloak_openid_client_default_scopes" "client_default_scopes" {
+  realm_id  = module.payara-client.CLIENT.realm_id
+  client_id = module.payara-client.CLIENT.id
+  default_scopes = [
+    "idir_aad",
+    "phsa",
+    "moh_idp",
+    "bceid_business"
+  ]
 }

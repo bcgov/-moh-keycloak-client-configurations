@@ -161,7 +161,8 @@ module "HOOPC_STG" {
   browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "HSCIS" {
-  source = "./clients/hscis"
+  source                       = "./clients/hscis"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "HSIAR" {
   source         = "./clients/hsiar"
