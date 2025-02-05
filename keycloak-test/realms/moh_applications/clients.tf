@@ -94,8 +94,9 @@ module "GIS" {
   browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "HAMIS" {
-  source                  = "./clients/hamis"
-  USER-MANAGEMENT-SERVICE = module.USER-MANAGEMENT-SERVICE
+  source                       = "./clients/hamis"
+  USER-MANAGEMENT-SERVICE      = module.USER-MANAGEMENT-SERVICE
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "HCAP-FE" {
   source = "./clients/hcap-fe"
