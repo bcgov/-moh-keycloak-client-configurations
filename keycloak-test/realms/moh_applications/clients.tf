@@ -491,7 +491,8 @@ module "SWT_STG" {
   source = "./clients/swt_stg"
 }
 module "TAP" {
-  source = "./clients/tap"
+  source                       = "./clients/tap"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "TBCM" {
   source = "./clients/tbcm"
