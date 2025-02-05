@@ -42,10 +42,12 @@ module "DMFT-WEBAPP" {
   LICENCE-STATUS = module.LICENCE-STATUS
 }
 module "EACL" {
-  source = "./clients/eacl"
+  source                       = "./clients/eacl"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "EACL_STG" {
-  source = "./clients/eacl_stg"
+  source                       = "./clients/eacl_stg"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "EDRD" {
   source = "./clients/edrd"

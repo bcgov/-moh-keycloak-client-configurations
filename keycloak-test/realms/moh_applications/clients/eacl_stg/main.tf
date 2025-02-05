@@ -33,4 +33,14 @@ module "payara-client" {
     "https://eaclstg.hlth.gov.bc.ca/*",
     "https://logontest7.gov.bc.ca/clp-cgi/logoff.cgi*",
   ]
+  authentication_flow_binding_override_browser_id = var.browser_idp_restriction_flow
+  login_theme                                     = "moh-app-realm-idp-restriction"
+}
+
+resource "keycloak_openid_client_default_scopes" "client_default_scopes" {
+  realm_id  = module.payara-client.CLIENT.realm_id
+  client_id = module.payara-client.CLIENT.id
+  default_scopes = [
+    "idir_aad"
+  ]
 }
