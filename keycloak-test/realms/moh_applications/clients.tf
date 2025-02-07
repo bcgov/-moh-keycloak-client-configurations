@@ -19,9 +19,8 @@ module "BULK-USER-UPLOAD" {
   realm-management = module.realm-management
 }
 module "CONNECT" {
-  source = "./clients/connect"
-    browser_idp_restriction_flow = local.browser_idp_restriction_flow
-
+  source                       = "./clients/connect"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "CMDB" {
   source = "./clients/cmdb"
@@ -60,7 +59,8 @@ module "EDRD-PORTAL" {
   browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "EHPR" {
-  source = "./clients/ehpr"
+  source                       = "./clients/ehpr"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "EMACCS-UMS" {
   source                  = "./clients/emaccs-ums"
