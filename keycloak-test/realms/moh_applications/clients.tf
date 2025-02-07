@@ -81,7 +81,8 @@ module "FMDB" {
   source = "./clients/fmdb"
 }
 module "FORMS" {
-  source = "./clients/forms"
+  source                       = "./clients/forms"
+  browser_idp_restriction_flow = local.browser_idp_restriction_flow
 }
 module "GENESYS" {
   source                       = "./clients/genesys"
