@@ -20,6 +20,8 @@ module "BULK-USER-UPLOAD" {
 }
 module "CONNECT" {
   source = "./clients/connect"
+    browser_idp_restriction_flow = local.browser_idp_restriction_flow
+
 }
 module "CMDB" {
   source = "./clients/cmdb"
